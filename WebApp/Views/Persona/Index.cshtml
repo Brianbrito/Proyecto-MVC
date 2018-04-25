@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApp.Models.Persona>
+
+@{
+    ViewBag.Title = "Lista de Personas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personas</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genero)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genero)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "DetallePersona", new { id=item.Id }) |
+            @Html.ActionLink("Eliminar", "EliminarPersona", new { id=item.Id }, new {@class = "aElimina" })
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts{
+    
+    <script>
+        $(".aElimina").click(function (event) {
+            if (!confirm('Estas seguro de eliminar el registro ?')) {
+                event.preventDefault();
+            }
+        });
+
+
+    </script>
+    
+    
+    
+    }

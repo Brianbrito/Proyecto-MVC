@@ -1,0 +1,43 @@
+﻿@model WebApp.Models.Direccion
+
+@{
+    ViewBag.Title = "DetalleDireccion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetalleDireccion</h2>
+
+<div>
+    <h4>Direccion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sector)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sector)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonaId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

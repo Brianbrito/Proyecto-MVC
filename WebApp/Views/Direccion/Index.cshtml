@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApp.Models.Direccion>
+
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Direcciones</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sector)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonaId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sector)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonaId)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "DetalleDireccion", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "EliminarDireccion", new { id = item.Id }, new { @class = "bElimina" })
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts{
+
+    <script>
+        $(".bElimina").click(function (event) {
+            if (!confirm('Estas seguro de eliminar el registro ?')) {
+                event.preventDefault();
+            }
+        });
+
+
+    </script>
+
+
+
+}
